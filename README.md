@@ -1,70 +1,105 @@
-# Getting Started with Create React App
+### Social Media App - Full Stack Group Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Brief
 
-## Available Scripts
+- Build a full stack web application. Must be your own work.
+- Select a Project Idea of your own.
+- Use Express with React to build your application
+- Deploy on Heroku or a similar platform so application is live on the web
+- Craft a README.md file that explains your app to the world
 
-In the project directory, you can run:
+## Deployed Project Link
 
-### `npm start`
+The deployed project can be accessed at https://stellar-pavlova-831e00.netlify.app/
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Clone the repository to your local machine.
+- Install the required dependencies by running npm install in the project directory.
+- Set up a MongoDB Atlas database and create a .env file with your database credentials. 
+- Start the backend server by running npm run server in the project directory.
+- Start the frontend server by running npm start in the project directory.
+- Access the app at http://localhost:3000/.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Note: You may need to adjust the API URL in the apiUrl.js file to match the URL of your backend server.
 
-### `npm test`
+## Overview & Concept
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The project is a social media platform where users can create an account, follow other users, and post content in various formats (text, images, videos, etc.). The main goal of the platform is to provide a space for users to share their thoughts, experiences, and creations with others who share similar interests.
 
-### `npm run build`
+## Technologies Used
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The project uses the following technologies:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Frontend:
+- ReactJS
+- HTML/CSS
+- Axios
+- React Router
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Backend: 
+- Node.js
+- Express
+- MongoDB
 
-### `npm run eject`
+### Approach Taken
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Planning
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+As a group we broke up our app into smaller tasks using a Trello board, and then each member picked which tasks they wanted to work on. We worked together on Zoom, group coding the initial setup of the backend. 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Wireframe
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+https://www.figma.com/file/0r22Y1xfk9pNu5cdQCQxiu/Social-media-app?node-id=0-1
 
-## Learn More
+## Initial ERD
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+![erd](https://i.imgur.com/PgOxe8H.png)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Build Process 
 
-### Code Splitting
+The project was developed using an agile methodology, with frequent iterations and feedback loops. The project was divided into several components, each with its own set of features and requirements. My main contribution was to the posts and feed components.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Posts Component:
 
-### Analyzing the Bundle Size
+For the Post component, I used the useState hook to manage state variables for editMode, postData, and updatedPostBody. I fetched post data from the backend API using the findPost function and set the postData state accordingly. I defined functions to handle clicks on the "Edit", "Save", and "Like" buttons, and to handle changes to the post text area. Finally, I conditionally rendered the component UI based on the editMode state.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+![snippet1](https://i.imgur.com/G3t4mfE.png)
 
-### Making a Progressive Web App
+For the CreatePost component, I used the useState hook to manage state variables for postContent and showForm. I defined a function to handle the form submission, which called the addPost function from the backend API and updated the currentUser state. I conditionally rendered the component UI based on the showForm state.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+![snippet2](https://i.imgur.com/DCamqWl.png)
 
-### Advanced Configuration
+I defined the Feed component as a functional component with the useState hook to manage the state of my posts array. To fetch the necessary data from the backend API, I used the useEffect hook to trigger the API calls and update the state of the component when necessary. I also used conditional rendering based on the currentUser and profilePage props.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+![snippet3](https://i.imgur.com/AAU5a2g.png)
 
-### Deployment
+Finally, I mapped through the posts array and rendered a Post component for each post. I also conditionally rendered a CreatePost component if the profilePage prop was true, allowing users to create new posts.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
+Backend Counterparts:
+- The backend counterparts for the posts and feed components include a set of APIs for creating, reading, updating, and deleting posts.
+- The APIs are implemented using Node.js and Express, with data stored in a MongoDB database.
+- The APIs use authentication and authorization to ensure that only authorized users can access or modify data.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Bugs, Blockers & Wins
+
+During the development process, several bugs and blockers were encountered. Some of the most significant issues included:
+- Infinite looping caused by hooks used to update the page
+- Difficulties caused by a lack of foresight on how we would build the project as a team, getting stuck on certain parts as we needed features other people had yet to finish
+
+
+
+Despite these challenges, the project also had several wins, including:
+- A streamlined and user-friendly interface for creating and sharing posts.
+- A scalable and flexible backend architecture that could easily accommodate future feature additions and updates.
+- A great experience working as a team and some insight into some of the difficulties that can occur when building something alongside other people, and how to overcome those challenges.
+
+## Future Features + Key Learnings
+
+Some potential future features for the project could include:
+- A search function to allow users to find specific content or users.
+- Advanced filtering and sorting options for the feed.
+- Integration with other social media platforms or APIs to expand the platform's reach and functionality.
+Some key learnings from the project include:
+- The importance of clear and effective communication and collaboration within a development team.
+- The value of user testing and feedback in shaping and refining the platform's features and functionality.
+- The need for continuous monitoring and maintenance to ensure the platform remains secure and functional over time.
